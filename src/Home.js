@@ -11,6 +11,7 @@ import {
   useNavigate,
 } from "react-router-dom";
 import Game from "./Game";
+import Game2 from "./Game2";
 import Rules from "./Rules";
 import "./App.css";
 
@@ -24,7 +25,10 @@ function Home() {
         <div>
           <title>
             <t1>
-              <Link to="/game">GAME </Link>
+              <Link to="/game">GAME-EASY </Link>
+            </t1>
+            <t1>
+              <Link to="/game2">GAME-MEDIUM </Link>
             </t1>
             <t1>
               <Link to="/rules">RULES </Link>
@@ -34,6 +38,7 @@ function Home() {
 
         <Routes>
           <Route path="/game" element={<Game />}></Route>
+          <Route path="/game2" element={<Game2 />}></Route>
           <Route path="/rules" element={<Rules />}></Route>
         </Routes>
       </div>

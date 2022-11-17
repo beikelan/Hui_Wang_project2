@@ -1,14 +1,14 @@
 import React, { useContext, useState, useEffect, createContext } from "react";
-import Board from "./components/Board";
-import GameOver from "./components/GameOver";
-import Keyboard from "./components/Keyboard";
-import { generateWords } from "./Words";
-import { boardDefault } from "./Words";
+import Board2 from "./components/Board2";
+import GameOver2 from "./components/GameOver2";
+import Keyboard2 from "./components/Keyboard2";
+import { generateWords2 } from "./Words";
+import { boardDefault2 } from "./Words";
 
 export const AppContext = createContext();
 
-function Game() {
-  const [board, setBoard] = useState(boardDefault);
+function Game2() {
+  const [board, setBoard] = useState(boardDefault2);
   const [currAtt, setCurrAtt] = useState({ att: 0, letter: 0 });
   const [wordSet, setWordSet] = useState(new Set());
   const [correctWord, setCorrectWord] = useState("");
@@ -19,20 +19,25 @@ function Game() {
   });
 
   useEffect(() => {
-    generateWords().then((words) => {
+    generateWords2().then((words) => {
       setWordSet(words.set);
       setCorrectWord(words.wordForToday);
     });
   }, []);
 
   const onEnter = () => {
-    if (currAtt.letter !== 6) return;
+    if (currAtt.letter !== 7) return;
 
     let currWord = "";
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < 7; i++) {
       currWord += board[currAtt.att][i];
     }
+    // if (wordSet.has(currWord.toLowerCase())) {
     setCurrAtt({ att: currAtt.att + 1, letter: 0 });
+    // }
+    // } else {
+    //   alert("Word not found");
+    // }
     console.log("word for today is : " + correctWord);
     console.log(currWord);
     if (currWord.toLowerCase() === correctWord) {
@@ -40,7 +45,7 @@ function Game() {
       return;
     }
     console.log(currAtt);
-    if (currAtt.att === 5) {
+    if (currAtt.att === 7) {
       setGameOver({ gameOver: true, guessedWord: false });
       return;
     }
@@ -55,14 +60,18 @@ function Game() {
   };
 
   const onSelect = (key) => {
-    if (currAtt.letter > 5) return;
+    if (currAtt.letter > 6) return;
     const newBoard = [...board];
+    console.log(currAtt.att);
+    console.log(currAtt.letter);
     newBoard[currAtt.att][currAtt.letter] = key;
+
     setBoard(newBoard);
     setCurrAtt({
       att: currAtt.att,
       letter: currAtt.letter + 1,
     });
+    console.log("select....");
   };
 
   return (
@@ -83,12 +92,12 @@ function Game() {
         }}
       >
         <div className="game">
-          <Board />
-          {gameOver.gameOver ? <GameOver /> : <Keyboard />}
+          <Board2 />
+          {gameOver.gameOver ? <GameOver2 /> : <Keyboard2 />}
         </div>
       </AppContext.Provider>
     </div>
   );
 }
 
-export default Game;
+export default Game2;

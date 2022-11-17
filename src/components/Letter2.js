@@ -1,10 +1,11 @@
 import React, { useContext, useEffect } from "react";
-import { AppContext } from "../Game";
+import { AppContext } from "../Game2";
 
-function Letter({ letterPos, value }) {
+function Letter2({ letterPos, value }) {
   const { board, correctWord, currAtt, disabledLetters, setDisabledLetters } =
     useContext(AppContext);
   const letter = board[value][letterPos];
+
   let correct = false;
   if (
     correctWord.toUpperCase()[letterPos] !== undefined &&
@@ -15,14 +16,10 @@ function Letter({ letterPos, value }) {
   } else {
     correct = false;
   }
-  // const correct = correctWord.toUpperCase()[letterPos] === letter;
   const almost =
     !correct && letter !== "" && correctWord.toUpperCase().includes(letter);
   const letterState = correct ? "correct" : almost ? "almost" : "error";
-  if (correct) {
-    console.log("2222");
-    console.log(letter);
-  }
+
   useEffect(() => {
     if (letter !== "" && !correct && !almost) {
       setDisabledLetters((prev) => [...prev, letter]);
@@ -35,4 +32,4 @@ function Letter({ letterPos, value }) {
   );
 }
 
-export default Letter;
+export default Letter2;
