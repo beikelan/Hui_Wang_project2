@@ -32,12 +32,7 @@ function Game2() {
     for (let i = 0; i < 7; i++) {
       currWord += board[currAtt.att][i];
     }
-    // if (wordSet.has(currWord.toLowerCase())) {
     setCurrAtt({ att: currAtt.att + 1, letter: 0 });
-    // }
-    // } else {
-    //   alert("Word not found");
-    // }
     console.log("word for today is : " + correctWord);
     console.log(currWord);
     if (currWord.toLowerCase() === correctWord) {
@@ -45,7 +40,7 @@ function Game2() {
       return;
     }
     console.log(currAtt);
-    if (currAtt.att === 7) {
+    if (currAtt.att === 6) {
       setGameOver({ gameOver: true, guessedWord: false });
       return;
     }
@@ -62,16 +57,12 @@ function Game2() {
   const onSelect = (key) => {
     if (currAtt.letter > 6) return;
     const newBoard = [...board];
-    console.log(currAtt.att);
-    console.log(currAtt.letter);
     newBoard[currAtt.att][currAtt.letter] = key;
-
     setBoard(newBoard);
     setCurrAtt({
       att: currAtt.att,
       letter: currAtt.letter + 1,
     });
-    console.log("select....");
   };
 
   return (

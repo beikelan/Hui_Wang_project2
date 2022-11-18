@@ -1,5 +1,5 @@
 import words from "./words.txt";
-import words2 from "./words.txt";
+import words2 from "./words2.txt";
 
 export const boardDefault = [
   ["", "", "", "", "", ""],

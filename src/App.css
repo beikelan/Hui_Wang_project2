@@ -69,7 +69,6 @@ nav h1 {
 
 .rule {
   display: flex;
-  /* flex-direction: row; */
   flex-direction: column;
   justify-content: flex-start;
   flex-wrap: wrap;

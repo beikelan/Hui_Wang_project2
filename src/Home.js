@@ -10,9 +10,9 @@ import {
   Link,
   useNavigate,
 } from "react-router-dom";
-import Game from "./Game";
 import Game2 from "./Game2";
 import Rules from "./Rules";
+import Game from "./Game";
 import "./App.css";
 
 function Home() {
@@ -37,8 +37,8 @@ function Home() {
         </div>
 
         <Routes>
-          <Route path="/game" element={<Game />}></Route>
           <Route path="/game2" element={<Game2 />}></Route>
+          <Route path="/game" element={<Game />}></Route>
           <Route path="/rules" element={<Rules />}></Route>
         </Routes>
       </div>

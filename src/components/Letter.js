@@ -19,10 +19,7 @@ function Letter({ letterPos, value }) {
   const almost =
     !correct && letter !== "" && correctWord.toUpperCase().includes(letter);
   const letterState = correct ? "correct" : almost ? "almost" : "error";
-  if (correct) {
-    console.log("2222");
-    console.log(letter);
-  }
+
   useEffect(() => {
     if (letter !== "" && !correct && !almost) {
       setDisabledLetters((prev) => [...prev, letter]);
